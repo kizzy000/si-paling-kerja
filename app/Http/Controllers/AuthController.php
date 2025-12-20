@@ -12,26 +12,14 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function showLoginForm()
+    public function index()
     {
         return view('auth.login');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function login(Request $request)
     {
         $request->validate([
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
@@ -39,7 +27,7 @@ class AuthController extends Controller
         if ($user && Hash::check($request->password, $user->password)) {
 
             Auth::login($user);
-            return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+            return redirect()->route('dashboard.index')->with('success', 'Login berhasil!');
         } else {
             return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
         }
@@ -50,39 +38,30 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        $request->session()->flush();
 
-        return redirect('/login')->with('success', 'Logout berhasil!');
+        return redirect('/')->with('success', 'Logout berhasil!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function showRegister()
     {
-        //
+        return view('auth.register');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function register(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('login.form')->with('success', 'Registrasi berhasil! Silakan login.');
     }
 }

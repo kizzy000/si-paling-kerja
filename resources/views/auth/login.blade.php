@@ -15,6 +15,7 @@
         @endif
 
         <form action="{{ route('login.submit') }}" class="mt-4" method="POST">
+            @csrf
             <!-- Form -->
             <div class="form-group mb-4">
                 <label for="email">Your Email</label>
@@ -25,7 +26,7 @@
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                         </svg>
                     </span>
-                    <input type="email" class="form-control" placeholder="example@company.com" id="email" autofocus>
+                    <input type="email" class="form-control" placeholder="example@company.com" id="email" name="email" value="{{ old('email') }}" autofocus required>
                 </div>
             </div>
             <!-- End of Form -->
@@ -39,7 +40,7 @@
                                 <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
                             </svg>
                         </span>
-                        <input type="password" placeholder="Password" class="form-control" id="password">
+                        <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
                     </div>
                 </div>
                 <!-- End of Form -->
@@ -82,7 +83,7 @@
         <div class="d-flex justify-content-center align-items-center mt-4">
             <span class="fw-normal">
                 Not registered?
-                <a href="./sign-up.html" class="fw-bold">Create account</a>
+                <a href="{{ route('register.form') }}" class="fw-bold">Create account</a>
             </span>
         </div>
     </div>

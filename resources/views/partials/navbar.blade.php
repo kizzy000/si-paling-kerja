@@ -13,12 +13,12 @@
           <nav id="navbar" class="navbar">
               <ul>
                   <li><a href="/">Home</a></li>
-                  <li><a href="/lowongan/">Lowongan</a></li>
-                  <li><a href="/informasi/">Informasi</a></li>
+                  <li><a href="/lowongan">Lowongan</a></li>
+                  <li><a href="/informasi">Informasi</a></li>
                   @auth
                       <li><a class="get-a-quote" href="/dashboard">Dashboard</a></li>
                   @else
-                      <li><a class="get-a-quote" href="/login">Masuk/Daftar</a></li>
+                      <li><a class="get-a-quote" href="auth/login">Masuk/Daftar</a></li>
                   @endauth
 
               </ul>

@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'foto',
     ];
 
     /**
@@ -44,5 +46,36 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Check if the user is an admin.
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if the user is a pendaftar.
+     */
+    public function isPendaftar()
+    {
+        return $this->role === 'pendaftar';
+    }
+
+    public function lamarans()
+    {
+        return $this->hasMany(Lamaran::class);
+    }
+
+    public function informasis()
+    {
+        return $this->hasMany(Informasi::class);
+    }
+
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
     }
 }

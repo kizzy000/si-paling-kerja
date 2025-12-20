@@ -12,7 +12,7 @@
             <p data-aos="fade-up" data-aos-delay="100">Sistem Informasi CARI KERJA merupakan Tempat Cari Lowongan Kerja dapat diakses secara mudah dan dimana saja</p>
 
 
-			  <a href="/lowongan" class="btn btn-primary">Lowongan Kerja Terbaru <i class="bi bi-arrow-right"></a></i>
+			  <a href="/lowongan" class="btn btn-primary">Lowongan Kerja Terbaru <a class="bi bi-arrow-right"></a></i>
             </form>
 
             <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
@@ -59,7 +59,7 @@
           </div>
 
           <div class="row">
-              
+            
           </div>
           <a href="/lowongan" class="btn btn-primary position-absolute bottom-20 start-50 translate-middle-x">Selengkapnya <i class="bi bi-arrow-right"></i></a>
         </div>
