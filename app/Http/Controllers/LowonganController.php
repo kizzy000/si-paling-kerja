@@ -12,12 +12,16 @@ class LowonganController extends Controller
     public function index()
     {
         $lowongans = Lowongan::with('user')->get();
-        return view('dashboard.lowongan.index', compact('lowongans'));
+        return view('dashboard.lowongan.index', [
+            'lowongans' => $lowongans
+        ]);
     }
 
     public function create()
     {
-        return view('dashboard.lowongan.create');
+        return view('dashboard.lowongan.create',[
+            'users' => Auth::user()
+        ]);
     }
 
     public function store(Request $request)
@@ -29,6 +33,16 @@ class LowonganController extends Controller
             'persyaratan' => 'required|string',
             'batas_waktu' => 'required|date|after:today',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ],
+        [
+            'judul.required' => 'Judul wajib diisi.',
+            'perusahaan.required' => 'Perusahaan wajib diisi.',
+            'posisi.required' => 'Posisi wajib diisi.',
+            'persyaratan.required' => 'Persyaratan wajib diisi.',
+            'batas_waktu.required' => 'Batas waktu wajib diisi.',
+            'batas_waktu.date'  => 'Format tanggal tidak valid.',
+            'batas_waktu.after' => 'Batas waktu harus berupa tanggal setelah hari ini.',
+            'gambar.image' => 'File harus berupa gambar.',
         ]);
 
         $data = $request->only(['judul', 'perusahaan', 'posisi', 'persyaratan', 'batas_waktu']);
@@ -64,6 +78,16 @@ class LowonganController extends Controller
             'persyaratan' => 'required|string',
             'batas_waktu' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ],
+        [
+            'judul.required' => 'Judul wajib diisi.',
+            'perusahaan.required' => 'Perusahaan wajib diisi.',
+            'posisi.required' => 'Posisi wajib diisi.',
+            'persyaratan.required' => 'Persyaratan wajib diisi.',
+            'batas_waktu.required' => 'Batas waktu wajib diisi.',
+            'batas_waktu.date'  => 'Format tanggal tidak valid.',
+            'batas_waktu.after' => 'Batas waktu harus berupa tanggal setelah hari ini.',
+            'gambar.image' => 'File harus berupa gambar.',
         ]);
 
         $lowongan = Lowongan::findOrFail($id);

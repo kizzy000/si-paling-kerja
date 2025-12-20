@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Edit Lowongan</h1>
-        <a href="/dashboard/lowongan/" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+        <a href="{{ route('dashboard.lowongan.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
         <div class="row">
             <div class="col">
                 <div class="card">

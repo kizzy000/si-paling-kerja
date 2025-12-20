@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Semua Informasi</h1>
-        <a href="/dashboard/informasi/create" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
+        <a href="{{ route('dashboard.informasi.create') }}" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -30,7 +30,7 @@
                                             <td>
                                                 <a href="{{ route('dashboard.informasi.show', $informasi->id) }}" class="btn btn-success mb-2"><i class="bi bi-eye-fill"></i></a>
                                                 <a href="{{ route('dashboard.informasi.edit', $informasi->id) }}" class="btn btn-warning mb-2"><i class="bi bi-pencil-fill"></i></a>
-                                                <form id="{{ $informasi->id }}" action="{{ route('dashboard.informasi.destroy', $informasi->id) }}" method="POST" class="d-inline">
+                                                <form id="{{ $informasi->slug }}" action="{{ route('dashboard.informasi.destroy', $informasi->id) }}" method="POST" class="d-inline">
                                                     @method('delete')
                                                     @csrf
                                                     <div class="btn btn-danger mb-2 swal-confirm" data-form="{{ $informasi->slug }}"><i class="bi bi-trash-fill"></i></div>

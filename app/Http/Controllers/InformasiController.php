@@ -12,7 +12,9 @@ class InformasiController extends Controller
     public function index()
     {
         $informasis = Informasi::all();
-        return view('dashboard.informasi.index', compact('informasis'));
+        return view('dashboard.informasi.index', [
+            'informasis' => $informasis
+        ]);
     }
 
     public function create()
@@ -23,7 +25,9 @@ class InformasiController extends Controller
     public function show($id)
     {
         $informasi = Informasi::with('user')->findOrFail($id);
-        return view('dashboard.informasi.show', compact('informasi'));
+        return view('dashboard.informasi.show', [
+            'informasi' => $informasi
+        ]);
     }
 
     public function store(Request $request)
@@ -32,6 +36,11 @@ class InformasiController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'file' => 'nullable|file|mimes:pdf,doc,docx,jpg,png|max:2048',
+        ],
+        [
+            'judul.required' => 'Judul wajib diisi.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
+            'file.file' => 'File harus berupa dokumen atau gambar.',
         ]);
 
         $data = $request->only(['judul', 'deskripsi']);
@@ -50,7 +59,9 @@ class InformasiController extends Controller
     public function edit($id)
     {
         $informasi = Informasi::findOrFail($id);
-        return view('dashboard.informasi.edit', compact('informasi'));
+        return view('dashboard.informasi.edit', [
+            'informasi' => $informasi
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -59,6 +70,11 @@ class InformasiController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'file' => 'nullable|file|mimes:pdf,doc,docx,jpg,png|max:2048',
+        ],
+        [
+            'judul.required' => 'Judul wajib diisi.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
+            'file.file' => 'File harus berupa dokumen atau gambar.',
         ]);
 
         $informasi = Informasi::findOrFail($id);

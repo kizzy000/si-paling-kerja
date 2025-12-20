@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Semua Lowongan</h1>
-        <a href="/dashboard/lowongan/create" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
+        <a href="{{ route('dashboard.lowongan.create') }}" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
         <div class="row">
             <div class="col">
                 <div class="card">

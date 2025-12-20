@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 
     <div class="container-fluid">
         <div class="row">
@@ -22,11 +22,8 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <p><img src="{{ asset('storage/' .$informasi->file) }}" alt="" class="img-fluid"></p>
                         <p>{!! $informasi->deskripsi !!}</p>
-                        @if ($informasi->file)
-                            <a href="{{ asset('storage/' .$informasi->file) }}"><i class="bi bi-file-earmark-arrow-down"></i> {{ basename($informasi->file) }}</a>
-                        @else
-                        @endif
                     </div>
                 </div>
             </div>

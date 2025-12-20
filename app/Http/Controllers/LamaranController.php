@@ -11,7 +11,10 @@ class LamaranController extends Controller
     public function index()
     {
         $lamaran = Lamaran::where('user_id', auth()->user()->id)->get();
-        return view('dashboard.lamaran.index', compact('lamaran'));
+        return view('dashboard.lamaran.index', [
+            'user' => Auth::user(),
+            'lamaran' => $lamaran
+        ]);
     }
 
     public function edit($id)
@@ -47,8 +50,8 @@ class LamaranController extends Controller
         ]);
 
         $lamaran = Lamaran::findOrFail($id);
-        $kodePendaftaran = $lamaran->kode_pendaftaran;
-        $lamaran->kode_pendaftaran = $kodePendaftaran;
+        // $kodePendaftaran = $lamaran->kode_pendaftaran;
+        // $lamaran->kode_pendaftaran = $kodePendaftaran;
         $lamaran->update($validate);
         return redirect()->route('dashboard.lamaran.index')->with('success', 'Lamaran berhasil diperbarui');
     }

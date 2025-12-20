@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 mx-auto d-block">
                 <h1 class="h3">Detail Lowongan</h1>
-                <a href="/dashboard/lowongan/" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+                <a href="{{ route('dashboard.lowongan.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
                 <div class="card">
                     <div class="card-body">
                         <h1 class="mt-3">{{ $lowongan->judul }}</h1>

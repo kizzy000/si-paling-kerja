@@ -17,7 +17,10 @@ use App\Http\Controllers\InformasiPublicController;
 Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/lowongan', [LowonganPublicController::class, 'index'])->name('lowongan.index');
+Route::get('/lowongan/{slug}', [LowonganPublicController::class, 'show'])->name('lowongan.show');
+
 Route::get('/informasi', [InformasiPublicController::class, 'index'])->name('informasi.index');
+Route::get('/informasi/{slug}', [InformasiPublicController::class, 'show'])->name('informasi.show');
 
 Route::get('auth/login', [AuthController::class, 'index'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');Route::get('auth/register', [AuthController::class, 'showRegister'])->name('register.form');
@@ -29,7 +32,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::middleware(['checkislogin'])->group(function () {
 
     // Shared Routes (both roles can access)
-
     Route::get('/dashboard/profil', [ProfilController::class, 'index'])->name('dashboard.profil.index');
     Route::get('/dashboard/profil/edit', [ProfilController::class, 'edit'])->name('dashboard.profil.edit');
     Route::put('/dashboard/profil', [ProfilController::class, 'update'])->name('dashboard.profil.update');
@@ -61,8 +63,8 @@ Route::middleware(['checkislogin'])->group(function () {
         Route::delete('/dashboard/lamaran/{id}', [LamaranController::class, 'destroy'])->name('dashboard.lamaran.destroy');
 
         // Data Pendaftar Management
-        Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index']);
-        Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar']);
+        Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index'])->name('dashboard.pendaftar.index');
+        Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar'])->name('dashboard.pendaftar.pendaftar');
     });
 
     // Pendaftar Routes

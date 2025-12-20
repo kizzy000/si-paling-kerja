@@ -4,10 +4,10 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span>SI CARI KERJA</span>
+          <a href="index.html" class="logo d-   flex align-items-center">
+            <span>SI PALING-KERJA</span>
           </a>
-          <p>Sistem Informasi CARI KERJA merupakan Tempat Cari Lowongan Kerja dapat diakses secara mudah dan dimana saja</p>
+          <p>Sistem Informasi cari kerja merupakan Tempat Cari Lowongan Kerja dapat diakses secara mudah dan dimana saja</p>
           <div class="social-links d-flex mt-4">
             <a href="https://www.youtube.com/@kaseps8304/videos" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="https://www.youtube.com/@kaseps8304/videos" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -33,8 +33,8 @@
            Konoha, Wakanda Selatan <br>
             Konoha Barat, Wakanda<br>
             Konoha Selatan Timur Barat Daya <br><br>
-            <strong>Phone:</strong> +62-822-6068-6031<br>
-            <strong>Email:</strong> asepsyaputra840@gmail.com<br>
+            <strong>Phone:</strong> +62-812-3456-7890<br>
+            <strong>Email:</strong> faiz24ti@mahasiswa.pcr.ac.id<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zhierly24ti@mahasiswa.pcr.ac.id
           </p>
 
         </div>
@@ -51,7 +51,6 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/ -->
-        Repost by <a href="https://www.youtube.com/@kaseps8304/videos">Kasep_Code</a>
       </div>
     </div>
 

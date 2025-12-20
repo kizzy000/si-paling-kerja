@@ -10,14 +10,18 @@ class ProfilController extends Controller
 {
     public function index()
     {
-        $user = Auth::user()->load(['lamarans.lowongans', 'informasis', 'lowongans']);
-        return view('dashboard.profil.index', compact('user'));
+        $user = Auth::user()->load(['lamarans.lowongan', 'informasis', 'lowongans']);
+        return view('dashboard.profil.index', [
+            'user' => $user
+        ]);
     }
 
     public function edit()
     {
         $user = Auth::user();
-        return view('dashboard.profil.edit', compact('user'));
+        return view('dashboard.profil.edit', [
+            'user' => $user
+        ]);
     }
 
     public function update(Request $request)

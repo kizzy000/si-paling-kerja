@@ -5,12 +5,11 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h1 class="h3 mb-3">Posting Informasi</h1>
-                <a href="/dashboard/informasi/" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+                <a href="{{ route('dashboard.informasi.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="{{ route('dashboard.informasi.create') }}" method="POST" enctype="multipart/form-data">
-                            @method('put')
+                        <form action="{{ route('dashboard.informasi.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">

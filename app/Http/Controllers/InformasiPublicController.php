@@ -9,7 +9,17 @@ class InformasiPublicController extends Controller
 {
     public function index()
     {
-        $informasis = Informasi::paginate(10);
-        return view('informasi.index', compact('informasis'));
+        $informasis = Informasi::paginate(6);
+        return view('informasi.index', [
+            'informasis' => $informasis
+        ]);
+    }
+
+    public function show($slug)
+    {
+        $informasi = Informasi::where('slug', $slug)->firstOrFail();
+        return view('informasi.show', [
+            'informasi' => $informasi
+        ]);
     }
 }

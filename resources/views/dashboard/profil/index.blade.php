@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Profil</h1>
-        <a href="/dashboard/" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+        <a href="{{ route('dashboard.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
         <form action="/dashboard/profil" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf

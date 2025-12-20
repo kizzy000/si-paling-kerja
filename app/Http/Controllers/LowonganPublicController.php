@@ -9,7 +9,17 @@ class LowonganPublicController extends Controller
 {
     public function index()
     {
-        $lowongans = Lowongan::where('deadline', '>=', now())->paginate(10);
-        return view('lowongan.index', compact('lowongans'));
+        $lowongans = Lowongan::orderBy('id')->paginate(6);
+        return view('lowongan.index', [
+            'lowongans' => $lowongans
+        ]);
+    }
+
+    public function show($slug)
+    {
+        $lowongan = Lowongan::where('slug', $slug)->firstOrFail();
+        return view('lowongan.show', [
+            'lowongan' => $lowongan
+        ]);
     }
 }

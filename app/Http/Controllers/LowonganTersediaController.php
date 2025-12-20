@@ -12,13 +12,17 @@ class LowonganTersediaController extends Controller
     public function index()
     {
         $lowongan = Lowongan::where('batas_waktu', '>=', now())->get();
-        return view('dashboard.lowongan-tersedia.index', compact('lowongan'));
+        return view('dashboard.lowongan-tersedia.index', [
+            'lowongan' => $lowongan
+        ]);
     }
 
     public function daftar($id)
     {
         $lowongan = Lowongan::findOrFail($id);
-        return view('dashboard.lowongan-tersedia.daftar', compact('lowongan'));
+        return view('dashboard.lowongan-tersedia.daftar', [
+            'lowongan' => $lowongan
+        ]);
     }
 
     public function store(Request $request, $id)

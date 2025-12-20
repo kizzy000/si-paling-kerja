@@ -10,9 +10,12 @@ class IndexController extends Controller
 {
     public function index()
     {
-        // $lowongans = Lowongan::where('deadline', '>=', now())->orderBy('created_at', 'desc')->take(5)->get();
-        // $informasis = Informasi::orderBy('created_at', 'desc')->take(3)->get();
-        // return view('index', compact('lowongans', 'informasis'));
-        return view('index');
+        $lowongans = Lowongan::orderBy('created_at', 'desc')->take(3)->get();
+        $informasis = Informasi::orderBy('created_at', 'desc')->take(3)->get();
+        return view('index', [
+            'lowongans' => $lowongans,
+            'informasis' => $informasis
+        ]);
+        // return view('index');
     }
 }

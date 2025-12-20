@@ -42,7 +42,7 @@
                 <ul class="sidebar-nav">
                     @if(auth()->user()->isAdmin())
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard">
+                            <a class="sidebar-link" href="{{ route('dashboard.index') }}">
                                 <i class="bi bi-speedometer2"></i> <span class="align-middle">Dashboard</span>
                             </a>
                         </li>
@@ -52,19 +52,19 @@
                             Menu Utama
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard/lowongan/">
+                            <a class="sidebar-link" href="{{ route('dashboard.lowongan.index') }}">
                                 <i class="bi bi-list-columns"></i> <span class="align-middle">Lowongan</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard/informasi/">
+                            <a class="sidebar-link" href="{{ route('dashboard.informasi.index') }}">
                                 <i class="bi bi-info-square"></i> <span class="align-middle">Informasi</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard/pendaftar/">
+                            <a class="sidebar-link" href="{{ route('dashboard.pendaftar.index') }}">
                                 <i class="bi bi-people"></i> <span class="align-middle">Pendaftar</span>
                             </a>
                         </li>
@@ -72,7 +72,7 @@
                         <li class="sidebar-header">
                             Lainnya
                         </li>
-                        <a class="sidebar-link" href="/dashboard/profil/">
+                        <a class="sidebar-link" href="{{ route('dashboard.profil.index') }}">
                             <i class="bi bi-book"></i> <span class="align-middle">Profil</span>
                         </a>
                         <li class="sidebar-item">
@@ -97,7 +97,7 @@
                         </li>
                     @else
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard">
+                            <a class="sidebar-link" href="{{ route('dashboard.index') }}">
                                 <i class="bi bi-speedometer2"></i> <span class="align-middle">Dashboard</span>
                             </a>
                         </li>
@@ -106,12 +106,12 @@
                             Menu Utama
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard/lowongan-tersedia/">
+                            <a class="sidebar-link" href="{{ route('dashboard.lowongan-tersedia.index') }}">
                                 <i class="bi bi-buildings"></i> <span class="align-middle">Perusahaan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard/lamaran/">
+                            <a class="sidebar-link" href="{{ route('dashboard.lamaran.index') }}">
                                 <i class="bi bi-book"></i> <span class="align-middle">Lamaran Anda</span>
                             </a>
                         </li>
@@ -120,7 +120,7 @@
                             Lainnya
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard/profil/">
+                            <a class="sidebar-link" href="{{ route('dashboard.profil.index') }}">
                                 <i class="bi bi-book"></i> <span class="align-middle">Profil</span>
                             </a>
                         </li>

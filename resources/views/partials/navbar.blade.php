@@ -5,7 +5,7 @@
           <a href="/" class="logo d-flex align-items-center">
               <!-- Uncomment the line below if you also wish to use an image logo -->
               <!-- <img src="assets/img/logo.png" alt=""> -->
-              <h1>SI CARI-KERJA</h1>
+              <h1>SI PALING-KERJA</h1>
           </a>
 
           <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>

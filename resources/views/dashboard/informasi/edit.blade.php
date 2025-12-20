@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h1 class="h3 mb-3">Edit Informasi</h1>
-                <a href="/dashboard/informasi/" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+                <a href="{{ route('dashboard.informasi.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
                 <div class="card">
                     <div class="card-body">
 

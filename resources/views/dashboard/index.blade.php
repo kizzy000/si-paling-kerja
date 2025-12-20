@@ -52,7 +52,7 @@
                             <i class="bi bi-people-fill text-success" style="font-size: 3rem;"></i>
                             <h5 class="mt-2">Kelola Lamaran</h5>
                             <p class="text-muted">Review dan kelola lamaran masuk</p>
-                            <a href="{{ route('dashboard.lamaran.index') }}" class="btn btn-success btn-sm">Kelola</a>
+                            <a href="{{ route('dashboard.pendaftar.index') }}" class="btn btn-success btn-sm">Kelola</a>
                         </div>
                     </div>
                 </div>
