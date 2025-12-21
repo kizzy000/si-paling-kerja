@@ -38,7 +38,7 @@
                                                     <button type="button" class="btn btn-danger"><i class="bi bi-x-square"> </i>Anda sudah mendaftar</button>
                                                 @else
                                                     @if($diff->days > 0)
-                                                        <a href="{{ route('dashboard.lowongan-tersedia.daftar', $lowongans->id) }}" class="btn btn-success"><i class="bi bi-person-plus"></i></a>
+                                                        <a href="{{ route('dashboard.lowongan-tersedia.daftar', $lowongans->slug) }}" class="btn btn-success"><i class="bi bi-person-plus"></i></a>
                                                     @else
                                                         <button type="button" class="btn btn-danger"><i class="bi bi-x-square"> </i>Pendaftaran Telah Berakhir</button>
                                                     @endif

@@ -57,15 +57,17 @@ class LowonganController extends Controller
         return redirect()->route('dashboard.lowongan.index')->with('success', 'Lowongan berhasil ditambahkan');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $lowongan = Lowongan::with('user', 'lamarans.user')->findOrFail($id);
+        // $lowongan = Lowongan::with('user', 'lamarans.user')->findOrFail($id);
+        $lowongan = Lowongan::where('slug', $slug)->firstOrFail();
         return view('dashboard.lowongan.show', compact('lowongan'));
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        $lowongan = Lowongan::findOrFail($id);
+        // $lowongan = Lowongan::findOrFail($id);
+        $lowongan = Lowongan::where('slug', $slug)->firstOrFail();
         return view('dashboard.lowongan.edit', compact('lowongan'));
     }
 

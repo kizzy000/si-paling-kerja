@@ -22,9 +22,11 @@ class InformasiController extends Controller
         return view('dashboard.informasi.create');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $informasi = Informasi::with('user')->findOrFail($id);
+
+        // $informasi = Informasi::with('user')->findOrFail($id);
+        $informasi = Informasi::where('slug', $slug)->firstOrFail();
         return view('dashboard.informasi.show', [
             'informasi' => $informasi
         ]);
@@ -56,9 +58,10 @@ class InformasiController extends Controller
         return redirect()->route('dashboard.informasi.index')->with('success', 'Informasi berhasil ditambahkan');
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        $informasi = Informasi::findOrFail($id);
+        // $informasi = Informasi::findOrFail($id);
+        $informasi = Informasi::where('slug', $slug)->firstOrFail();
         return view('dashboard.informasi.edit', [
             'informasi' => $informasi
         ]);

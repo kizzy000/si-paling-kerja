@@ -42,8 +42,8 @@ Route::middleware(['checkislogin'])->group(function () {
         Route::get('/dashboard/informasi', [InformasiController::class, 'index'])->name('dashboard.informasi.index');
         Route::get('/dashboard/informasi/create', [InformasiController::class, 'create'])->name('dashboard.informasi.create');
         Route::post('/dashboard/informasi', [InformasiController::class, 'store'])->name('dashboard.informasi.store');
-        Route::get('/dashboard/informasi/{id}', [InformasiController::class, 'show'])->name('dashboard.informasi.show');
-        Route::get('/dashboard/informasi/{id}/edit', [InformasiController::class, 'edit'])->name('dashboard.informasi.edit');
+        Route::get('/dashboard/informasi/{informasi:slug}', [InformasiController::class, 'show'])->name('dashboard.informasi.show');
+        Route::get('/dashboard/informasi/{informasi:slug}/edit', [InformasiController::class, 'edit'])->name('dashboard.informasi.edit');
         Route::put('/dashboard/informasi/{id}', [InformasiController::class, 'update'])->name('dashboard.informasi.update');
         Route::delete('/dashboard/informasi/{id}', [InformasiController::class, 'destroy'])->name('dashboard.informasi.destroy');
 
@@ -51,8 +51,8 @@ Route::middleware(['checkislogin'])->group(function () {
         Route::get('/dashboard/lowongan', [LowonganController::class, 'index'])->name('dashboard.lowongan.index');
         Route::get('/dashboard/lowongan/create', [LowonganController::class, 'create'])->name('dashboard.lowongan.create');
         Route::post('/dashboard/lowongan', [LowonganController::class, 'store'])->name('dashboard.lowongan.store');
-        Route::get('/dashboard/lowongan/{id}', [LowonganController::class, 'show'])->name('dashboard.lowongan.show');
-        Route::get('/dashboard/lowongan/{id}/edit', [LowonganController::class, 'edit'])->name('dashboard.lowongan.edit');
+        Route::get('/dashboard/lowongan/{lowongan:slug}', [LowonganController::class, 'show'])->name('dashboard.lowongan.show');
+        Route::get('/dashboard/lowongan/{lowongan:slug}/edit', [LowonganController::class, 'edit'])->name('dashboard.lowongan.edit');
         Route::put('/dashboard/lowongan/{id}', [LowonganController::class, 'update'])->name('dashboard.lowongan.update');
         Route::delete('/dashboard/lowongan/{id}', [LowonganController::class, 'destroy'])->name('dashboard.lowongan.destroy');
 
@@ -71,7 +71,7 @@ Route::middleware(['checkislogin'])->group(function () {
     Route::middleware(['checkrole:pendaftar'])->group(function () {
         // Lowongan Tersedia (Available Jobs)
         Route::get('/dashboard/lowongan-tersedia', [LowonganTersediaController::class, 'index'])->name('dashboard.lowongan-tersedia.index');
-        Route::get('/dashboard/lowongan-tersedia/{id}/daftar', [LowonganTersediaController::class, 'daftar'])->name('dashboard.lowongan-tersedia.daftar');
+        Route::get('/dashboard/lowongan-tersedia/{lowongan:slug}/daftar', [LowonganTersediaController::class, 'daftar'])->name('dashboard.lowongan-tersedia.daftar');
         Route::post('/dashboard/lowongan-tersedia/{id}/daftar', [LowonganTersediaController::class, 'store'])->name('dashboard.lowongan-tersedia.store');
 
         // Lamaran Management (Pendaftar view)

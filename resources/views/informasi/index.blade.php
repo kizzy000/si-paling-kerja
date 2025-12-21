@@ -22,7 +22,7 @@
                             <img src="{{ asset('storage/'. $informasi->file) }}" alt="">
                             <h5 class="card-title">{{ $informasi->judul }}</h5>
                             <p class="card-text">{{ Str::limit(strip_tags($informasi->deskripsi), 100) }}</p>
-                            <a href="{{ route('informasi.show', $informasi->slug) }}" class="mt-auto btn btn-info">Lihat Detail</a>
+                            <a href="{{ route('informasi.show', $informasi->slug) }}" class="mt-auto btn btn-primary text-white">Lihat Detail</a>
                         </div>
                     </div>
                 </div>

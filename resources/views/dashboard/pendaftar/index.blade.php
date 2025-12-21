@@ -25,7 +25,7 @@
                                             <td><img src="{{ asset('storage/'. $lowongan->gambar) }}" alt="gambar-perusahaan" style="width: 250px"; height="200px"></td>
                                             <td>{{ $lowongan->perusahaan }}</td>
                                             <td>
-                                                <a href="/dashboard/pendaftar/{{ $lowongan->slug }}" class="btn btn-success"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="{{ route('dashboard.pendaftar.pendaftar', $lowongan->slug) }}" class="btn btn-success"><i class="bi bi-eye-fill"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

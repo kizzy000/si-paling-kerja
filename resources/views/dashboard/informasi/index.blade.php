@@ -28,8 +28,8 @@
                                             <td>{{ $informasi->excerpt }}</td>
                                             <td><a href="{{ asset('storage/' .$informasi->file) }}">{{ basename($informasi->file) }}</a></td>
                                             <td>
-                                                <a href="{{ route('dashboard.informasi.show', $informasi->id) }}" class="btn btn-success mb-2"><i class="bi bi-eye-fill"></i></a>
-                                                <a href="{{ route('dashboard.informasi.edit', $informasi->id) }}" class="btn btn-warning mb-2"><i class="bi bi-pencil-fill"></i></a>
+                                                <a href="{{ route('dashboard.informasi.show', $informasi->slug) }}" class="btn btn-success mb-2"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="{{ route('dashboard.informasi.edit', $informasi->slug) }}" class="btn btn-warning mb-2"><i class="bi bi-pencil-fill"></i></a>
                                                 <form id="{{ $informasi->slug }}" action="{{ route('dashboard.informasi.destroy', $informasi->id) }}" method="POST" class="d-inline">
                                                     @method('delete')
                                                     @csrf

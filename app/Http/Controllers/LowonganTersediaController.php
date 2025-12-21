@@ -17,9 +17,10 @@ class LowonganTersediaController extends Controller
         ]);
     }
 
-    public function daftar($id)
+    public function daftar($slug)
     {
-        $lowongan = Lowongan::findOrFail($id);
+        // $lowongan = Lowongan::findOrFail($id);
+        $lowongan = Lowongan::where('slug', $slug)->firstOrFail();
         return view('dashboard.lowongan-tersedia.daftar', [
             'lowongan' => $lowongan
         ]);

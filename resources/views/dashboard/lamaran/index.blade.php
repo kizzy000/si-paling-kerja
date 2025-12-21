@@ -24,7 +24,7 @@
                                             <td>{{ $list->lowongan->perusahaan }}</td>
                                             <td>
                                                 <a href=" {{  route('dashboard.lamaran.edit', $list->id  ) }}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a>
-                                                <form id="{{ $list->id }}" action="/dashboard/lamaran/{{ $list->id }}" method="POST" class="d-inline">
+                                                <form id="{{ $list->id }}" action="{{ route('dashboard.lamaran.destroy', $list->id ) }}" method="POST" class="d-inline">
                                                     @method('delete')
                                                     @csrf
                                                     <div class="btn btn-danger swal-confirm" data-form="{{ $list->id }}"><i class="bi bi-trash-fill"></i></div>

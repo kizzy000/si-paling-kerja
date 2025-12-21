@@ -30,8 +30,8 @@
                                             <td>{{ $lowongan->posisi }}</td>
                                             <td>{{ $lowongan->batas_waktu }}</td>
                                             <td>
-                                                <a href="{{ route('dashboard.lowongan.show', $lowongan->id ) }}" class="btn btn-success mb-2"><i class="bi bi-eye-fill"></i></a>
-                                                <a href="{{ route('dashboard.lowongan.edit', $lowongan->id ) }}" class="btn btn-warning  mb-2"><i class="bi bi-pencil-fill"></i></a>
+                                                <a href="{{ route('dashboard.lowongan.show', $lowongan->slug ) }}" class="btn btn-success mb-2"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="{{ route('dashboard.lowongan.edit', $lowongan->slug ) }}" class="btn btn-warning  mb-2"><i class="bi bi-pencil-fill"></i></a>
                                                 <form id="{{ $lowongan->slug }}" action="{{ route('dashboard.lowongan.destroy', $lowongan->id) }}" method="POST" class="d-inline">
                                                     @method('delete')
                                                     @csrf

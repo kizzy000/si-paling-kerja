@@ -78,7 +78,7 @@
                                         Pendaftaran Di Tutup
                                     @endif
                                 </h6>
-                                <a href="{{ route('lowongan.show', $lowongan->slug) }}" class="mt-auto btn btn-primary">Lihat Detail</a>
+                                <a href="{{ route('lowongan.show', $lowongan->slug) }}" class="mt-auto btn btn-primary text-white">Lihat Detail</a>
                             </div>
                         </div>
                     </div>
