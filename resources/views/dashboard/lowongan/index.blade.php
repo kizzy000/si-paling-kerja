@@ -4,6 +4,23 @@
     <div class="container-fluid p-0">
         <h1 class="h3">Semua Lowongan</h1>
         <a href="{{ route('dashboard.lowongan.create') }}" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
+        <form method="GET" action="{{ route('dashboard.lowongan.index') }}" class="mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="search_judul" class="form-control" placeholder="Cari judul lowongan..." value="{{ request('search_judul') }}">
+                </div>
+                <div class="col-md-3">
+                    <select name="sort" class="form-select">
+                        <option value="">Urutkan</option>
+                        <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Terlama</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col">
                 <div class="card">

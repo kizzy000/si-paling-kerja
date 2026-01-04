@@ -8,6 +8,14 @@
             <h2>Lowongan Terbaru</h2>
         </div>
       </div>
+        <div class="container mt-4">
+            <form method="GET" action="{{ route('lowongan.index') }}" class="d-flex justify-content-center">
+                <div class="input-group w-50">
+                    <input type="text" name="search_judul" class="form-control" placeholder="Cari judul lowongan..." value="{{ request('search_judul') }}">
+                    <button class="btn btn-primary" type="submit">Cari</button>
+                </div>
+            </form>
+        </div>
     </div>
 </section>
 
@@ -40,6 +48,9 @@
                     </div>
                 </div>
                 @endforeach
+            </div>
+            <div class="mt-3">
+                {{ $lowongans->links('pagination::bootstrap-5') }}
             </div>
         </div>
   </section>

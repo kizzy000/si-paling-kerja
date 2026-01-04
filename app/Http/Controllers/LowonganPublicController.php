@@ -7,9 +7,13 @@ use App\Models\Lowongan;
 
 class LowonganPublicController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $lowongans = Lowongan::orderBy('id')->paginate(6);
+        $lowongans = Lowongan::searchJudul($request->search_judul)
+            ->orderBy('id')
+            ->paginate(6)
+            ->appends($request->query());
+
         return view('lowongan.index', [
             'lowongans' => $lowongans
         ]);

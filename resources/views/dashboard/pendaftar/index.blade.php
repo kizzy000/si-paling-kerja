@@ -3,6 +3,16 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Daftar Perusahaan</h1>
+        <form method="GET" action="{{ route('dashboard.pendaftar.index') }}" class="mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="search_perusahaan" class="form-control" placeholder="Cari nama perusahaan..." value="{{ request('search_perusahaan') }}">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col">
                 <div class="card">

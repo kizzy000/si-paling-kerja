@@ -8,21 +8,34 @@ use Illuminate\Support\Facades\Auth;
 
 class DataPendaftarController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $lowongans = Lowongan::searchPerusahaan($request->search_perusahaan)
+            ->paginate(5)
+            ->appends($request->query());
+
         return view('dashboard.pendaftar.index', [
             'users'     => Auth::user(),
-            'lowongans' => Lowongan::paginate(5)
+            'lowongans' => $lowongans
         ]);
     }
 
     // Untuk menampilkan Data Pelamar
-    public function pendaftar(Lowongan $lowongan)
+    public function pendaftar(Request $request, Lowongan $lowongan)
     {
+        $lamarans = $lowongan->lamarans()
+            ->with('user')
+            ->filter([
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'search_nama' => $request->search_nama,
+            ])
+            ->paginate(5)
+            ->appends($request->query());
+
         return view('dashboard.pendaftar.list', [
             'users'     => Auth::user(),
             'lowongan'  => $lowongan,
-            'lamarans'  => $lowongan->lamarans()->paginate(5)
+            'lamarans'  => $lamarans
         ]);
     }
 }

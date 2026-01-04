@@ -9,9 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class LowonganTersediaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $lowongan = Lowongan::where('batas_waktu', '>=', now())->paginate(5);
+        $lowongan = Lowongan::active()
+            ->searchPerusahaan($request->search)
+            ->sortByDate($request->sort)
+            ->paginate(5)
+            ->appends($request->query());
+
         return view('dashboard.lowongan-tersedia.index', [
             'lowongan' => $lowongan
         ]);

@@ -26,6 +26,12 @@ class Lamaran extends Model
         $query->when($filters['jenis_kelamin'] ?? false, function ($query, $jenis_kelamin) {
             return $query->where('jenis_kelamin', $jenis_kelamin);
         });
+
+        $query->when($filters['search_nama'] ?? false, function ($query, $search_nama) {
+            return $query->whereHas('user', function ($q) use ($search_nama) {
+                $q->where('name', 'like', '%' . $search_nama . '%');
+            });
+        });
     }
 
     //slug sebagai route key

@@ -19,16 +19,16 @@
 
               <div class="col-lg-3 col-6">
                 <div class="stats-item text-center w-100 h-100">
-
-                  <p></p>
+                  <span data-purecounter-start="0" data-purecounter-end="{{ $total_lowongan }}" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>Total Lowongan</p>
                 </div>
               </div><!-- End Stats Item -->
 
 
               <div class="col-lg-3 col-6">
                 <div class="stats-item text-center w-100 h-100">
-
-                  <p></p>
+                  <span data-purecounter-start="0" data-purecounter-end="{{ $total_lamaran }}" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>Total Pelamar</p>
                 </div>
               </div><!-- End Stats Item -->
 

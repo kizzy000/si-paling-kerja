@@ -38,4 +38,39 @@ class Lowongan extends Model
     {
         return $this->hasMany(Lamaran::class);
     }
+
+    // Scope untuk lowongan aktif
+    public function scopeActive($query)
+    {
+        return $query->where('batas_waktu', '>=', now());
+    }
+
+    // Scope untuk search berdasarkan perusahaan
+    public function scopeSearchPerusahaan($query, $search)
+    {
+        if ($search) {
+            return $query->where('perusahaan', 'like', '%' . $search . '%');
+        }
+        return $query;
+    }
+
+    // Scope untuk search berdasarkan judul
+    public function scopeSearchJudul($query, $judul)
+    {
+        if ($judul) {
+            return $query->where('judul', 'like', '%' . $judul . '%');
+        }
+        return $query;
+    }
+
+    // Scope untuk sort berdasarkan tanggal
+    public function scopeSortByDate($query, $sort)
+    {
+        if ($sort == 'terbaru') {
+            return $query->orderBy('created_at', 'desc');
+        } elseif ($sort == 'terlama') {
+            return $query->orderBy('created_at', 'asc');
+        }
+        return $query;
+    }
 }

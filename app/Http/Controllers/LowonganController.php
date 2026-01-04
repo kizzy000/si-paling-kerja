@@ -9,9 +9,14 @@ use Illuminate\Support\Str;
 
 class LowonganController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $lowongans = Lowongan::with('user')->paginate(5);
+        $lowongans = Lowongan::with('user')
+            ->searchJudul($request->search_judul)
+            ->sortByDate($request->sort)
+            ->paginate(5)
+            ->appends($request->query());
+
         return view('dashboard.lowongan.index', [
             'lowongans' => $lowongans
         ]);

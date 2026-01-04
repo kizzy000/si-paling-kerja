@@ -4,6 +4,23 @@
     <div class="container-fluid p-0">
         <h1 class="h3">Data Pendaftar {{ $lowongan->perusahaan }}</h1>
         <a href="{{ route('dashboard.pendaftar.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+        <form method="GET" action="{{ route('dashboard.pendaftar.pendaftar', $lowongan->slug) }}" class="mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="text" name="search_nama" class="form-control" placeholder="Cari nama..." value="{{ request('search_nama') }}">
+                </div>
+                <div class="col-md-3">
+                    <select name="jenis_kelamin" class="form-select">
+                        <option value="">Semua Jenis Kelamin</option>
+                        <option value="laki-laki" {{ request('jenis_kelamin') == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                        <option value="perempuan" {{ request('jenis_kelamin') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -26,7 +43,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($lowongan->lamarans as $list)
+                                    @foreach ($lamarans as $list)
                                         <tr>
                                             <td>{{ $loop->iteration + ($lamarans->currentPage() - 1) * $lamarans->perPage() }}</td>
                                             <td>{{ $list->user->name }}</td>

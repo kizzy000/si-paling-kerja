@@ -3,6 +3,23 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Daftar Perusahaan</h1>
+        <form method="GET" action="{{ route('dashboard.lowongan-tersedia.index') }}" class="mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="search" class="form-control" placeholder="Cari nama perusahaan..." value="{{ request('search') }}">
+                </div>
+                <div class="col-md-3">
+                    <select name="sort" class="form-select">
+                        <option value="">Semua</option>
+                        <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Terlama</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -49,9 +66,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mt-3">
-                            {{ $lowongan->links() }}
-                        </div>
+
+                            <div class="mt-3">
+                                {{ $lowongans->links('pagination::bootstrap-5') }}
+                            </div>
+                            
                     </div>
                 </div>
             </div>
