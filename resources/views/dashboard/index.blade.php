@@ -13,6 +13,8 @@
                         <h3 class="mb-0">Selamat Datang, {{ auth()->user()->name }}</h3>
                         @if(auth()->user()->isAdmin())
                             <span class="badge bg-primary">Administrator</span>
+                        @elseif(auth()->user()->isPerusahaan())
+                            <span class="badge bg-secondary">Perusahaan</span>
                         @else
                             <span class="badge bg-success">Pendaftar</span>
                         @endif
@@ -20,6 +22,35 @@
                 </div>
             </div>
         </div>
+
+        @if(auth()->user()->isPerusahaan())
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="text-primary">{{ $totalLowongan ?? 0 }}</h2>
+                        <p class="text-muted">Total Lowongan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="text-success">{{ $totalLamaran ?? 0 }}</h2>
+                        <p class="text-muted">Total Lamaran</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="text-warning">{{ $pendingLamaran ?? 0 }}</h2>
+                        <p class="text-muted">Lamaran Pending</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
 
         <div class="row mt-4">
             @if(auth()->user()->isAdmin())
@@ -53,6 +84,51 @@
                             <h5 class="mt-2">Kelola Lamaran</h5>
                             <p class="text-muted">Review dan kelola lamaran masuk</p>
                             <a href="{{ route('dashboard.pendaftar.index') }}" class="btn btn-success btn-sm">Kelola</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-people-fill text-success" style="font-size: 3rem;"></i>
+                            <h5 class="mt-2">Kelola User</h5>
+                            <p class="text-muted">Review dan kelola User masuk</p>
+                            <a href="{{ route('dashboard.users.index') }}" class="btn btn-success btn-sm">Kelola</a>
+                        </div>
+                    </div>
+                </div>
+            @elseif(auth()->user()->isPerusahaan())
+                <!-- Perusahaan Dashboard Cards -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-briefcase text-primary" style="font-size: 3rem;"></i>
+                            <h5 class="mt-2">Kelola Lowongan</h5>
+                            <p class="text-muted">Posting dan kelola lowongan kerja</p>
+                            <a href="{{ route('dashboard.lowongan.index') }}" class="btn btn-primary btn-sm">Kelola</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+                            <h5 class="mt-2">Seleksi Pelamar</h5>
+                            <p class="text-muted">Review dan seleksi lamaran</p>
+                            <a href="{{ route('dashboard.lamaran.index') }}" class="btn btn-success btn-sm">Seleksi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="bi bi-person-circle text-info" style="font-size: 3rem;"></i>
+                            <h5 class="mt-2">Profil Perusahaan</h5>
+                            <p class="text-muted">Kelola informasi perusahaan</p>
+                            <a href="{{ route('dashboard.profil.index') }}" class="btn btn-info btn-sm">Edit</a>
                         </div>
                     </div>
                 </div>

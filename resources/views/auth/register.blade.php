@@ -71,14 +71,14 @@
                 </div>
             </div>
             <!-- Role -->
-            {{-- <div class="form-group mb-4">
+            <div class="form-group mb-4">
                 <label for="role">Role</label>
                 <select class="form-control" id="role" name="role" required>
                     <option value="">Select Role</option>
                     <option value="pendaftar" {{ old('role') == 'pendaftar' ? 'selected' : '' }}>Pendaftar</option>
-                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="perusahaan" {{ old('role') == 'perusahaan' ? 'selected' : '' }}>Perusahaan</option>
                 </select>
-            </div> --}}
+            </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-gray-800">Create account</button>
             </div>

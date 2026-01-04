@@ -59,6 +59,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'role' => 'required|in:pendaftar,perusahaan',
         ],
         [
             'name.required'  => 'Nama wajib diisi.',
@@ -68,12 +69,15 @@ class AuthController extends Controller
             'password.required' => 'Password wajib diisi.',
             'password.min'   => 'Password minimal 8 karakter.',
             'password.confirmed' => 'Konfirmasi password tidak sesuai.',
+            'role.required' => 'Role wajib dipilih.',
+            'role.in' => 'Role tidak valid.',
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
         return redirect()->route('login.form')->with('success', 'Registrasi berhasil! Silakan login.');

@@ -3,6 +3,12 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Daftar Perusahaan</h1>
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <form method="GET" action="{{ route('dashboard.lowongan-tersedia.index') }}" class="mb-3">
             <div class="row">
                 <div class="col-md-4">

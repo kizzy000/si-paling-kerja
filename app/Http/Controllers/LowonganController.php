@@ -11,11 +11,15 @@ class LowonganController extends Controller
 {
     public function index(Request $request)
     {
-        $lowongans = Lowongan::with('user')
+        $query = Lowongan::with('user')
             ->searchJudul($request->search_judul)
-            ->sortByDate($request->sort)
-            ->paginate(5)
-            ->appends($request->query());
+            ->sortByDate($request->sort);
+
+        if (Auth::user()->isPerusahaan()) {
+            $query->where('user_id', Auth::id());
+        }
+
+        $lowongans = $query->paginate(5)->appends($request->query());
 
         return view('dashboard.lowongan.index', [
             'lowongans' => $lowongans

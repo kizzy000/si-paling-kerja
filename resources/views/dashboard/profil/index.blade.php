@@ -4,6 +4,12 @@
     <div class="container-fluid p-0">
         <h1 class="h3">Profil</h1>
         <a href="{{ route('dashboard.index') }}" type="button" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <form action="/dashboard/profil" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf

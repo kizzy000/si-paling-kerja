@@ -64,6 +64,14 @@ class User extends Authenticatable
         return $this->role === 'pendaftar';
     }
 
+    /**
+     * Check if the user is a perusahaan.
+     */
+    public function isPerusahaan()
+    {
+        return $this->role === 'perusahaan';
+    }
+
     public function lamarans()
     {
         return $this->hasMany(Lamaran::class);

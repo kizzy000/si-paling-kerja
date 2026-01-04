@@ -43,10 +43,17 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'andi',
-            'email' => 'andi@example.com',
+            'name' => 'Perusahaan ABC',
+            'email' => 'perusahaan@example.com',
             'password' => Hash::make('password123'),
-            'role' => 'pendaftar',
+            'role' => 'perusahaan',
+        ]);
+
+        User::factory()->create([
+            'name' => 'PCR Company',
+            'email' => 'pcr@example.com',
+            'password' => Hash::make('password123'),
+            'role' => 'perusahaan',
         ]);
     }
 }

@@ -19,6 +19,7 @@ class Lamaran extends Model
         'no_telepon',
         'user_id',
         'lowongan_id',
+        'status',
     ];
 
     public function scopeFilter($query, array $filters)

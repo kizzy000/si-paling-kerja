@@ -26,6 +26,10 @@ class CheckRole
             abort(403, 'Unauthorized');
         }
 
+        if ($role === 'perusahaan' && !$user->isPerusahaan()) {
+            abort(403, 'Unauthorized');
+        }
+
         return $next($request);
     }
 }

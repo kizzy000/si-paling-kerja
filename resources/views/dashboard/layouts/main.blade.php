@@ -70,12 +70,68 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('dashboard.users.index') }}">
+                                <i class="bi bi-people"></i> <span class="align-middle">User</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-header">
                             Lainnya
                         </li>
                         <a class="sidebar-link" href="{{ route('dashboard.profil.index') }}">
                             <i class="bi bi-book"></i> <span class="align-middle">Profil</span>
                         </a>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+									Swal.fire({
+										title: 'Konfirmasi Keluar',
+										text: 'Apakah Anda yakin ingin keluar?',
+										icon: 'warning',
+										showCancelButton: true,
+										confirmButtonColor: '#3085d6',
+										cancelButtonColor: '#d33',
+										confirmButtonText: 'Ya, Keluar!'
+									}).then((result) => {
+										if (result.isConfirmed) {
+											document.getElementById('logout-form-sidebar').submit();
+										}
+									});">
+
+                                <i class="bi bi-box-arrow-right"></i> <span>Keluar</span>
+                            </a>
+                        </li>
+                    @elseif(auth()->user()->isPerusahaan())
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('dashboard.index') }}">
+                                <i class="bi bi-speedometer2"></i> <span class="align-middle">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-header">
+                            Menu Utama
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('dashboard.lowongan.index') }}">
+                                <i class="bi bi-briefcase"></i> <span class="align-middle">Lowongan</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('dashboard.lamaran.index') }}">
+                                <i class="bi bi-check-circle"></i> <span class="align-middle">Seleksi Pelamar</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-header">
+                            Lainnya
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('dashboard.profil.index') }}">
+                                <i class="bi bi-person-circle"></i> <span class="align-middle">Profil</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

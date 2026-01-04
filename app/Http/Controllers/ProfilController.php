@@ -29,7 +29,7 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ],
         [
@@ -38,7 +38,6 @@ class ProfilController extends Controller
             'email.email'    => 'Format email tidak valid.',
             'email.unique'   => 'Email sudah digunakan.',
             'password.min'   => 'Password minimal 8 karakter.',
-            'password.confirmed' => 'Konfirmasi password tidak sesuai.',
             'foto.image'     => 'File harus berupa gambar.',
         ]);
 

@@ -4,6 +4,12 @@
     <div class="container-fluid p-0">
         <h1 class="h3">Semua Lowongan</h1>
         <a href="{{ route('dashboard.lowongan.create') }}" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <form method="GET" action="{{ route('dashboard.lowongan.index') }}" class="mb-3">
             <div class="row">
                 <div class="col-md-4">
