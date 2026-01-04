@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\CheckIsLogin;
+use App\Http\Middleware\CheckLogin;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
 
-		    'checkislogin' => CheckIsLogin::class,
+		    'checkislogin' => CheckLogin::class,
 
             'checkrole' => \App\Http\Middleware\CheckRole::class,
         ]);
