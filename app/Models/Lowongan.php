@@ -25,7 +25,7 @@ class Lowongan extends Model
     //mengatur slug sebagai route key
     public function getRouteKeyName()
     {
-        return 'slug';  
+        return 'slug';
     }
 
     public function user()

@@ -12,7 +12,7 @@ class DataPendaftarController extends Controller
     {
         return view('dashboard.pendaftar.index', [
             'users'     => Auth::user(),
-            'lowongans' => Lowongan::all()
+            'lowongans' => Lowongan::paginate(5)
         ]);
     }
 
@@ -21,7 +21,8 @@ class DataPendaftarController extends Controller
     {
         return view('dashboard.pendaftar.list', [
             'users'     => Auth::user(),
-            'lowongan'  => $lowongan
+            'lowongan'  => $lowongan,
+            'lamarans'  => $lowongan->lamarans()->paginate(5)
         ]);
     }
 }

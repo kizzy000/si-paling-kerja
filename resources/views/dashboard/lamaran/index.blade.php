@@ -9,7 +9,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table id="table_id" class="display">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -20,7 +20,7 @@
                                 <tbody>
                                     @foreach ($lamaran as $list)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loop->iteration + ($lamaran->currentPage() - 1) * $lamaran->perPage() }}</td>
                                             <td>{{ $list->lowongan->perusahaan }}</td>
                                             <td>
                                                 <a href=" {{  route('dashboard.lamaran.edit', $list->id  ) }}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a>
@@ -33,19 +33,17 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                {{-- {{ $lamaran->links('pagination::bootstrap-5') }} --}}
                             </table>
+                        </div>
+                        <div class="mt-3">
+                            {{ $lamaran->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-    } );
-    </script>
 
 @endsection
 

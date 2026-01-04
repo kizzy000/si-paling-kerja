@@ -10,7 +10,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table id="table_id" class="display">
+                            <table class="table table-striped" id="table_Lowongan">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -24,7 +24,7 @@
                                 <tbody>
                                     @foreach ($lowongans as $lowongan)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loop->iteration + ($lowongans->currentPage() - 1) * $lowongans->perPage() }}</td>
                                             <td>{{ $lowongan->judul }}</td>
                                             <td>{{ $lowongan->perusahaan }}</td>
                                             <td>{{ $lowongan->posisi }}</td>
@@ -42,18 +42,17 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            <div class="mt-3">
+                                {{ $lowongans->links('pagination::bootstrap-5') }}
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-    } );
-    </script>
 
 @endsection
 

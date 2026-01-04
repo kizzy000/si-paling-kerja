@@ -10,7 +10,7 @@ class LamaranController extends Controller
 {
     public function index()
     {
-        $lamaran = Lamaran::where('user_id', auth()->user()->id)->get();
+        $lamaran = Lamaran::where('user_id', auth()->user()->id)->paginate(5);
         return view('dashboard.lamaran.index', [
             'user' => Auth::user(),
             'lamaran' => $lamaran

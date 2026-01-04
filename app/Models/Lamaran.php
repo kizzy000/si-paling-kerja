@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 
 class Lamaran extends Model
 {
@@ -19,6 +20,13 @@ class Lamaran extends Model
         'user_id',
         'lowongan_id',
     ];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['jenis_kelamin'] ?? false, function ($query, $jenis_kelamin) {
+            return $query->where('jenis_kelamin', $jenis_kelamin);
+        });
+    }
 
     //slug sebagai route key
     public function getRouteKeyName()

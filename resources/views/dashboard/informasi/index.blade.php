@@ -10,7 +10,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table id="table_id" class="display">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -23,7 +23,7 @@
                                 <tbody>
                                     @foreach ($informasis as $informasi)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loop->iteration + ($informasis->currentPage() - 1) * $informasis->perPage() }}</td>
                                             <td>{{ $informasi->judul }}</td>
                                             <td>{{ $informasi->excerpt }}</td>
                                             <td><a href="{{ asset('storage/' .$informasi->file) }}">{{ basename($informasi->file) }}</a></td>
@@ -41,17 +41,14 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="mt-3">
+                            {{ $informasis->links('pagination::bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-    } );
-    </script>
 
 @endsection
 

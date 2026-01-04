@@ -9,7 +9,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table id="table_id" class="display">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -27,7 +27,7 @@
                                         $diff = $end_date->diff(\Carbon\Carbon::now());
                                     @endphp
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loop->iteration + ($lowongan->currentPage() - 1) * $lowongan->perPage() }}</td>
                                             <td><img src="{{ asset('storage/'. $lowongans->gambar) }}" alt="gambar-perusahaan" style="width: 250px"; height="200px"></td>
                                             <td>{{ $lowongans->perusahaan }}</td>
                                             <td>{{ $lowongans->posisi }}</td>
@@ -49,17 +49,14 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="mt-3">
+                            {{ $lowongan->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-    } );
-    </script>
 
 @endsection
 

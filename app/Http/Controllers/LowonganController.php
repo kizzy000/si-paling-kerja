@@ -11,7 +11,7 @@ class LowonganController extends Controller
 {
     public function index()
     {
-        $lowongans = Lowongan::with('user')->get();
+        $lowongans = Lowongan::with('user')->paginate(5);
         return view('dashboard.lowongan.index', [
             'lowongans' => $lowongans
         ]);

@@ -23,8 +23,10 @@ Route::get('/informasi', [InformasiPublicController::class, 'index'])->name('inf
 Route::get('/informasi/{slug}', [InformasiPublicController::class, 'show'])->name('informasi.show');
 
 Route::get('auth/login', [AuthController::class, 'index'])->name('login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('login.submit');Route::get('auth/register', [AuthController::class, 'showRegister'])->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register.submit');Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::get('auth/register', [AuthController::class, 'showRegister'])->name('register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
+Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Auth::routes();
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

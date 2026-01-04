@@ -11,7 +11,7 @@ class InformasiController extends Controller
 {
     public function index()
     {
-        $informasis = Informasi::all();
+        $informasis = Informasi::paginate(5);
         return view('dashboard.informasi.index', [
             'informasis' => $informasis
         ]);

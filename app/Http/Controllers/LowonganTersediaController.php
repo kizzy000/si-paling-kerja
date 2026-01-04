@@ -11,7 +11,7 @@ class LowonganTersediaController extends Controller
 {
     public function index()
     {
-        $lowongan = Lowongan::where('batas_waktu', '>=', now())->get();
+        $lowongan = Lowongan::where('batas_waktu', '>=', now())->paginate(5);
         return view('dashboard.lowongan-tersedia.index', [
             'lowongan' => $lowongan
         ]);
