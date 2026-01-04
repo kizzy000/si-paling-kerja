@@ -42,10 +42,6 @@ Route::middleware(['checkislogin'])->group(function () {
     // Shared Lamaran Routes (Moved here to prevent route collision between roles)
     Route::get('/dashboard/lamaran', [LamaranController::class, 'index'])->name('dashboard.lamaran.index');
     Route::get('/dashboard/lamaran/{id}/edit', [LamaranController::class, 'edit'])->name('dashboard.lamaran.edit');
-    //perusahaan edit status
-    Route::get('/dashboard/lamaran/{id}/edit-status', [LamaranController::class, 'editPerusahaan'])->name('dashboard.lamaran.edit-status');
-    //update status pelamaran oleh perusahaan
-    Route::put('/dashboard/lamaran/{id}/update-status', [LamaranController::class, 'updateStatuslamaran'])->name('dashboard.lamaran.update-status');
     Route::put('/dashboard/lamaran/{id}', [LamaranController::class, 'update'])->name('dashboard.lamaran.update');
     Route::delete('/dashboard/lamaran/{id}', [LamaranController::class, 'destroy'])->name('dashboard.lamaran.destroy');
 
@@ -89,5 +85,13 @@ Route::middleware(['checkislogin'])->group(function () {
         Route::get('/dashboard/lowongan-tersedia', [LowonganTersediaController::class, 'index'])->name('dashboard.lowongan-tersedia.index');
         Route::get('/dashboard/lowongan-tersedia/{lowongan:slug}/daftar', [LowonganTersediaController::class, 'daftar'])->name('dashboard.lowongan-tersedia.daftar');
         Route::post('/dashboard/lowongan-tersedia/{id}/daftar', [LowonganTersediaController::class, 'store'])->name('dashboard.lowongan-tersedia.store');
+    });
+
+    // Perusahaan Routes
+    Route::middleware(['checkrole:perusahaan'])->group(function () {
+        //perusahaan edit status
+        Route::get('/dashboard/lamaran/{id}/edit-status', [LamaranController::class, 'editPerusahaan'])->name('dashboard.lamaran.edit-status');
+        //update status pelamaran oleh perusahaan
+        Route::put('/dashboard/lamaran/{id}/update-status', [LamaranController::class, 'updateStatuslamaran'])->name('dashboard.lamaran.update-status');
     });
 });
