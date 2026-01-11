@@ -39,6 +39,8 @@ class ProfilController extends Controller
             'email.unique'   => 'Email sudah digunakan.',
             'password.min'   => 'Password minimal 8 karakter.',
             'foto.image'     => 'File harus berupa gambar.',
+            'foto.mimes'     => 'Format gambar harus jpeg, png, jpg, atau gif.',
+            'foto.max'       => 'Ukuran gambar maksimal adalah 2MB.',
         ]);
 
         $data = $request->only(['name', 'email']);

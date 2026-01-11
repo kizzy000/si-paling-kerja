@@ -26,7 +26,12 @@
                                     <p class="text-danger">Ini adalah foto Default, segera upload foto anda !</p>
                                 @endif
 
-                                <input type="file" class="form-control" name="foto" onchange="previewImage()">
+                                <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" onchange="previewImage()">
+                                @error('foto')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>

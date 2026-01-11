@@ -33,6 +33,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Perusahaan</th>
+                                            <th>Status</th>
                                             <th>Opsi</th>
                                         </tr>
                                     @endif
@@ -61,6 +62,15 @@
                                             <tr>
                                                 <td>{{ $loop->iteration + ($lamaran->currentPage() - 1) * $lamaran->perPage() }}</td>
                                                 <td>{{ $list->lowongan->perusahaan }}</td>
+                                                <td>
+                                                    <span class="badge
+                                                        @if($list->status == 'pending') bg-warning
+                                                        @elseif($list->status == 'accepted') bg-success
+                                                        @else bg-danger
+                                                        @endif">
+                                                        {{ ucfirst($list->status) }}
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <a href="{{ route('dashboard.lamaran.edit', $list->id) }}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a>
                                                     <form id="{{ $list->id }}" action="{{ route('dashboard.lamaran.destroy', $list->id) }}" method="POST" class="d-inline">

@@ -3,7 +3,11 @@
 @section('container')
     <div class="container-fluid p-0">
         <h1 class="h3">Semua Lowongan</h1>
+        
+        @if(Auth::user()->isPerusahaan())
         <a href="{{ route('dashboard.lowongan.create') }}" type="button" class="btn btn-primary mb-3"><i class="bi bi-plus-circle"></i> Posting Baru</a>
+        @endif
+
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -35,17 +39,29 @@
                         <div class="table-responsive">
                             <table class="table table-striped" id="table_Lowongan">
                                 <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Judul</th>
-                                        <th>Perusahaan</th>
-                                        <th>Posisi</th>
-                                        <th>Batas Waktu</th>
-                                        <th>Opsi</th>
-                                    </tr>
+                                    @if(Auth::user()->isPerusahaan())
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Judul</th>
+                                            <th>Perusahaan</th>
+                                            <th>Posisi</th>
+                                            <th>Batas Waktu</th>
+                                            <th>Opsi</th>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Judul</th>
+                                            <th>Perusahaan</th>
+                                            <th>Posisi</th>
+                                            <th>Batas Waktu</th>
+                                            <th>Opsi</th>
+                                        </tr>
+                                    @endif
                                 </thead>
                                 <tbody>
                                     @foreach ($lowongans as $lowongan)
+                                        @if(Auth::user()->isPerusahaan())
                                         <tr>
                                             <td>{{ $loop->iteration + ($lowongans->currentPage() - 1) * $lowongans->perPage() }}</td>
                                             <td>{{ $lowongan->judul }}</td>
@@ -62,6 +78,18 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @else
+                                        <tr>
+                                            <td>{{ $loop->iteration + ($lowongans->currentPage() - 1) * $lowongans->perPage() }}</td>
+                                            <td>{{ $lowongan->judul }}</td>
+                                            <td>{{ $lowongan->perusahaan }}</td>
+                                            <td>{{ $lowongan->posisi }}</td>
+                                            <td>{{ $lowongan->batas_waktu }}</td>
+                                            <td>
+                                                <a href="{{ route('dashboard.lowongan.show', $lowongan->slug ) }}" class="btn btn-success mb-2"><i class="bi bi-eye-fill"></i></a>
+                                            </td>
+                                        </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
